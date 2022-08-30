@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System.Threading;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 IWebDriver driver = new ChromeDriver();
@@ -71,3 +72,103 @@ else
     Console.WriteLine("new record unsuccessfull.");
 
 }
+
+
+Thread.Sleep(2000);
+
+
+
+//ebElement GoToEditButton = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[3]/table/tbody/tr[10]/td[5]a[1]"));
+//ToEditButton.Click();//
+
+//ebElement EditTcDd = driver.FindElement(By.XPath("//*[@id=\'TimeMaterialEditForm\']/div/div[1]/div/span[1]/span/span[1]"));
+//itTcDd.Click();
+
+//ebElement EditCodeTb = driver.FindElement(By.Id("Code"));
+//itCodeTb.SendKeys("mrng");
+
+//ditDescriptionTb.SendKeys("mrng");
+
+//ebElement NewPriceTag = driver.FindElement(By.XPath("//*[@id=\'TimeMaterialEditForm\']/div/div[4]/div/span[1]/span"));
+//wPriceTag.Click();
+
+//ditPrice.SendKeys("14");
+
+//ebElement GoToSaveButton = driver.FindElement(By.Id("SaveButton"));
+//ToSaveButton.Click();
+
+//oToBl.Click();
+
+//IWebElement GoToPage947 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/ul/li[3]/span"));
+//GoToPage947.Click();//
+
+//ebElement Codeabc = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[3]/table/tbody/tr[10]/td[1]"));
+// (Codeabc.Text =="mrng")
+//  //onsole.WriteLine("Edit successfull.");//
+
+//
+
+//se
+// //Console.WriteLine("Edit unsuccessfull.");
+//
+
+
+IWebElement GoToEditButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
+GoToEditButton.Click();
+
+IWebElement editTypeCodeTexbox = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]"));
+editTypeCodeTexbox.Click();
+
+IWebElement EditCodeTB = driver.FindElement(By.Id("Code"));
+EditCodeTB.SendKeys("mrng");
+
+IWebElement EditDescriptionTB = driver.FindElement(By.Id("Description"));
+EditDescriptionTB.SendKeys("mrng");
+
+IWebElement EditPriceTag = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
+EditPriceTag.Click();
+
+IWebElement EditPrice = driver.FindElement(By.Id("Price"));
+EditPrice.SendKeys("14");
+
+IWebElement GoToSaveButton = driver.FindElement(By.Id("SaveButton"));
+GoToSaveButton.Click();
+Thread.Sleep(1000);
+
+IWebElement GoToLPButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]"));
+GoToLPButton.Click();
+
+Thread.Sleep(1000);
+
+IWebElement EditNewcode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+if (EditNewcode.Text == "abcmrng")
+{
+    Console.WriteLine("edit successfull");
+}
+
+else
+{
+    Console.WriteLine("edit unsuccessfull");
+}
+
+//Thread.Sleep(1000);
+
+//IWebElement goToEditNewCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+//goToEditNewCode.Click();
+//IWebElement goToDeleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
+//goToDeleteButton.Click();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
