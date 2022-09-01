@@ -1,10 +1,13 @@
 ﻿
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace testing.pages
 {
     public class tmpage
     {
+        
+
         public void CreateTm(IWebDriver driver)
         {
 
@@ -34,17 +37,23 @@ namespace testing.pages
             GoToLastPageButton.Click();
 
             IWebElement NewCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            if (NewCode.Text == "abc")
-            {
-                Console.WriteLine("new record successfully created.");
-            }
 
-            else
+            Assert.That(NewCode.Text == "abc", "actual code and expected code do not match");
 
-            {
-                Console.WriteLine("new record unsuccessfull.");
 
-            }
+
+            //Assertion second method
+            //if (NewCode.Text == "abc")
+            //{
+            //    Assert.Pass("new record successfully created.");
+            //}
+
+            //else
+
+            //{
+            //    Assert.Fail("new record unsuccessfull.");
+
+            //}
 
         }
 
@@ -79,18 +88,26 @@ namespace testing.pages
             Thread.Sleep(1000);
 
             IWebElement EditNewcode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            if (EditNewcode.Text == "abcmrng")
-            {
-                Console.WriteLine("edit successfull");
-            }
 
-            else
-            {
-                Console.WriteLine("edit unsuccessfull");
-            }
+            Assert.That(EditNewcode.Text == "abcmrng", "actual code and expected code  match");
+
+
+            //if (EditNewcode.Text == "abcmrng")
+            //{
+            //    Console.WriteLine("edit successfull");
+            //}
+
+            //else
+            //{
+            //    Console.WriteLine("edit unsuccessfull");
+            //}
 
         }
 
+        //private static string NewMethod()
+        //{
+        //    return "abcmrng";
+        //}
 
         public void DeleteTm(IWebDriver driver)
         {
@@ -101,7 +118,21 @@ namespace testing.pages
             // click on ok in the pop up
             driver.SwitchTo().Alert().Accept();
 
+
+            IWebElement EditedCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            EditedCode.Click();
             // validate your test
+
+            Assert.That(EditedCode.Text  != "Automated text", "delete successfull");
+            //if (Lastpage.Text == null)
+            //{
+            //    Console.WriteLine("DeleteTm successfull");
+
+            //}
+            //else
+            //{
+            //    Console.WriteLine("DeleteTm unsuccessfull");
+            //}
         }
     }
 }

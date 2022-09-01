@@ -1,34 +1,88 @@
-﻿using System.Threading;
-using OpenQA.Selenium;
+﻿
 using OpenQA.Selenium.Chrome;
 using testing.pages;
+using NUnit.Framework;
+using testing.utilities;
 
-IWebDriver driver = new ChromeDriver();
+namespace testing.tests
 
-//login page object intialization and definition//
+{
+    [ TestFixture]
+    public class TMtest : Commondriver
+    {
+        [SetUp]
+        public void LoginActions()
+        {
+             driver = new ChromeDriver();
+            login_page loginPageobj = new();
+            loginPageobj.loginsteps(driver);
 
-login_page loginPageobj = new login_page();
-loginPageobj.loginsteps(driver);
+            homepage homePageobj = new homepage();
+            homePageobj.goToTmPage(driver);
 
-homepage homePageobj = new homepage();
-homePageobj.goTOTmPage(driver);
+        }
 
-tmpage tmPageobj = new tmpage();
-tmPageobj.CreateTm(driver);
+        [Test]
+        public void CreateTMtest()
+        {
+            tmpage tmPageobj = new tmpage();
+            tmPageobj.CreateTm(driver);
+
+        }
+
+        [Test]
+        public void EditTMtest()
+        {
+            tmpage tmPageobj = new tmpage();
+            tmPageobj.EditTm(driver);
+        }
 
 
-tmPageobj.EditTm(driver);
+        [Test]
+        public void DeleteTMtest()
+        {
+            tmpage tmPageobj = new tmpage();
+            tmPageobj.DeleteTm(driver);
 
-tmPageobj.DeleteTm(driver);
+        }
+
+        [TearDown]
+        public void CloseTestRun()
+        {
+
+            driver.Quit();
+        }
 
 
-//Thread.Sleep(1000);
+        //IWebDriver driver = new ChromeDriver();
 
-//IWebElement goToEditNewCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-//goToEditNewCode.Click();
+        //login page object intialization and definition//
 
-//IWebElement goToDeleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
-//goToDeleteButton.Click();
+                    //loginpage loginPageobj = new loginpage();
+                    //loginPageobj.loginsteps(driver);
 
-//driver.SwitchTo().Alert().Accept();
+                    //homepage homePageobj = new homepage();
+                    // homePageobj.goTOTmPage(driver);
+
+                    //tmpage tmPageobj = new tmpage();
+                    // tmPageobj.CreateTm(driver);
+
+
+                    // tmPageobj.EditTm(driver);
+
+                    // tmPageobj.DeleteTm(driver);
+
+     }
+
+
+    //Thread.Sleep(1000);
+
+    //IWebElement goToEditNewCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+    //goToEditNewCode.Click();
+
+    //IWebElement goToDeleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
+    //goToDeleteButton.Click();
+
+    //driver.SwitchTo().Alert().Accept();
+}
 
